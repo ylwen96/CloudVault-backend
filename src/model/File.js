@@ -91,7 +91,7 @@ class File {
       console.log({ error }, "file class, unable to find files by id", {
         ownerId,
       });
-      throw new Error(`Error found, ${error}`);
+      throw new Error(`Error found, ${error} cannot find file id ${id}`);
     }
   }
 
@@ -106,7 +106,7 @@ class File {
       return deleteFile(ownerId, id);
     } catch (error) {
       console.log({ error }, "something wrong, failed to delete");
-      throw new Error(`Error found, ${error}`);
+      throw new Error(`Error found, ${error} cannot delete file id ${id}`);
     }
   }
 
@@ -120,7 +120,7 @@ class File {
       return writeFile(this);
     } catch (error) {
       console.log({ error }, "file class, failed to save");
-      throw new Error(`Error found, ${error}`);
+      throw new Error(`Error found, ${error} cannot save file id ${id}`);
     }
   }
 
@@ -133,7 +133,7 @@ class File {
       return readFileData(this.ownerId, this.id);
     } catch (error) {
       console.log({ error }, "file class, failed to get data");
-      throw new Error(`Error found, ${error}`);
+      throw new Error(`Error found, ${error} cannot get file data of id ${id}`);
     }
   }
 
@@ -154,7 +154,7 @@ class File {
       }
     } catch (error) {
       console.log({ error }, "file class, failed to set data");
-      return Promise.reject(new Error(`Error found, ${error}`));
+      return Promise.reject(new Error(`Error found, ${error} cannot update file id ${id}`));
     }
   }
 

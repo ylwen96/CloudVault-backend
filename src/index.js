@@ -7,8 +7,8 @@ const cors = require("cors");
 const helmet = require("helmet");
 const compression = require("compression");
 const app = express();
-const passport = require('passport');
-const authorization = require('./authorization');
+const passport = require("passport");
+const authorization = require("./authorization");
 
 // middlewares
 app.use(helmet()); // Use security middleware
@@ -19,7 +19,7 @@ passport.use(authorization.strategy());
 app.use(passport.initialize());
 
 // routes
-app.use('/', require('./routes'));
+app.use("/", require("./routes"));
 
 // 404
 app.use((req, res) => {
@@ -36,15 +36,15 @@ app.use((err, req, res, next) => {
   // We may already have an error response we can use, but if not, use a generic
   // 500 server error and message.
   const status = err.status || 500;
-  const message = err.message || 'unable to process request';
+  const message = err.message || "unable to process request";
 
   // If this is a server error, log something so we can see what's going on.
   if (status > 499) {
-    logger.error({ err }, `Error processing request`);
+    console.log({ err }, `Error processing request`);
   }
 
   res.status(status).json({
-    status: 'error',
+    status: "error",
     error: {
       message,
       code: status,

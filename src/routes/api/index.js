@@ -22,11 +22,11 @@ const rawBody = () =>
 // GET: /drive/files
 router.get("/files", require("./get"));
 
-// GET by id /drive/files/:id
+// GET by id /drive/files/:id     Note: this route will display file content
 router.get("/files/:id", require("./getById"));
 
-// GET by id /drive/files/:id/info
-router.get('/files/:id/info', require('./getByIdInfo'));
+// GET by id /drive/files/:id/info     Note: this route will print file information e.g. create data, file size, etc
+router.get("/files/:id/info", require("./getByIdInfo"));
 
 // POST /drive/files
 router.post("/files", rawBody(), require("./post"));

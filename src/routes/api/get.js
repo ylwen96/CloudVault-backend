@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
   const expand = req.query.expand;
 
   try {
-    const files = await File.byUser(ownerId, expand > 0);
+    const files = await File.byUser(ownerId, expand === 'true');
     res.status(200).json({
       status: "ok",
       files: files,
@@ -16,8 +16,8 @@ module.exports = async (req, res) => {
     res.status(404).json({
       status: "error",
       error: {
-        code: code,
-        message: message,
+        code: 404,
+        message: "file to get list of files",
       },
     });
   }

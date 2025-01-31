@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
   try {
     const file = new File(await File.byId(req.user, id));
     file.type = type;
-    if (file.isSupportedType(type)) {
+    if (File.isSupportedType(type)) {
       await file.save();
       await file.setData(req.body);
       res.status(200).json({ status: "ok", file: file });

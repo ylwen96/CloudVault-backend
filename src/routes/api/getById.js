@@ -10,7 +10,6 @@ module.exports = async (req, res) => {
 
   try {
     const file = new File(await File.byId(ownerId, id));
-
     if (ext) {
       if (file.isSupportedExtension(ext)) {
         res
@@ -33,7 +32,7 @@ module.exports = async (req, res) => {
         .send(await file.getData());
     }
   } catch (error) {
-    logger.error({ error }, "error found, cannot get file by", { id });
+    console.log({ error }, "error found, cannot get file by", { id });
     res.status(404).json({
       status: "error",
       error: {

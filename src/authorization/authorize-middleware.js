@@ -1,5 +1,5 @@
-const passport = require('passport');
-const hash = require('../hash');
+const passport = require("passport");
+const hash = require("../hash");
 
 /**
  * @param {'bearer' | 'http'} strategyName - the passport strategy to use
@@ -16,23 +16,27 @@ module.exports = (strategyName) => {
     function callback(err, email) {
       // Something failed, let the the error handling middleware deal with it
       if (err) {
-        logger.warn({ err }, 'error authenticating user');
-        return next(createErrorResponse(500, 'Unable to authenticate user'));
+        console.log({ err }, "error authenticating user");
+        return next(createErrorResponse(500, "Unable to authenticate user"));
       }
 
       // Not authorized, return a 401
       if (!email) {
-        return res.status(401).json(createErrorResponse(401, 'Unauthorized'));
+        return res.status(401).json(createErrorResponse(401, "Unauthorized"));
       }
 
       // Authorized. Hash the user's email, attach to the request, and continue
       req.user = hash(email);
-      logger.debug({ email, hash: req.user }, 'Authenticated user');
+      console.log({ email, hash: req.user }, "Authenticated user");
       next();
     }
 
     // Call the given passport strategy's authenticate() method, passing the
     // req, res, next objects.  Invoke our custom callback when done.
-    passport.authenticate(strategyName, { session: false }, callback)(req, res, next);
+    passport.authenticate(strategyName, { session: false }, callback)(
+      req,
+      res,
+      next
+    );
   };
 };

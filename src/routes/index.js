@@ -6,9 +6,7 @@ const { version, author } = require("../../package.json");
 const router = express.Router();
 const { authenticate } = require("../authorization");
 
-// router.use(`/drive`, authenticate(), require("./api")); // need authentication
-router.use(`/drive`, require("./api"));
-
+router.use(`/drive`, authenticate(), require("./api")); // need authentication
 
 router.get("/", (req, res) => {
   // Client's shouldn't cache this response (always request it fresh)
