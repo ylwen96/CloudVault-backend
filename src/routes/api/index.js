@@ -14,8 +14,8 @@ router.get('/files', require('./get'));
 
 // DELETE /drive/files/:id
 
+// login by aws cognito
 
-
-
+// sign up by aws cognito
 
 module.exports = router;
