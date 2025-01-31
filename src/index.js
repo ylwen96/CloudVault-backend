@@ -1,4 +1,6 @@
 // src/index.js  main entry
+require("dotenv").config(); // read env file
+
 const express = require("express");
 const stoppable = require("stoppable");
 const cors = require("cors");
@@ -7,8 +9,6 @@ const compression = require("compression");
 const app = express();
 const passport = require('passport');
 const authorization = require('./authorization');
-
-require("dotenv").config(); // read env file
 
 // middlewares
 app.use(helmet()); // Use security middleware
