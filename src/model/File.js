@@ -1,6 +1,5 @@
-const { nanoid } = require("nanoid");
+const { nanoid } = require('nanoid');
 const contentType = require("content-type");
-
 const md = require("markdown-it")();
 const sharp = require("sharp");
 

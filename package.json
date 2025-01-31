@@ -25,10 +25,12 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
-    "nanoid": "^5.0.9",
+    "markdown-it": "^14.1.0",
+    "nanoid": "^3.3.4",
     "passport": "^0.7.0",
     "pino": "^9.6.0",
     "pino-http": "^10.4.0",
+    "sharp": "^0.33.5",
     "stoppable": "^1.1.0"
   }
 }
