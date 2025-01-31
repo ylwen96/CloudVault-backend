@@ -32,6 +32,6 @@ const port = parseInt(process.env.PORT || 8080, 10);
 
 stoppable(
   app.listen(port, () => {
-    console.log("listening on port ", port);
+    console.log("listening on port ", port, ", url : http://localhost:8080");
   })
 );
