@@ -25,6 +25,9 @@ router.get("/files", require("./get"));
 // GET by id /drive/files/:id
 router.get("/files/:id", require("./getById"));
 
+// GET by id /drive/files/:id/info
+router.get('/files/:id/info', require('./getByIdInfo'));
+
 // POST /drive/files
 router.post("/files", rawBody(), require("./post"));
 
@@ -33,9 +36,5 @@ router.put("/files/:_id", rawBody(), require("./putById"));
 
 // DELETE /drive/files/:_id
 router.delete("/files/:_id", require("./deleteById"));
-
-// login by aws cognito
-
-// sign up by aws cognito
 
 module.exports = router;
