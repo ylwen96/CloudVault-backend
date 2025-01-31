@@ -16,9 +16,13 @@ module.exports = async (req, res) => {
       res.status(200).json({ status: "ok", file: file });
     } else {
       console.log("Content-Type is not supported");
-      res
-        .status(400)
-        .json(createErrorResponse(400, "Content-Type is not supported"));
+      res.status(400).json({
+        status: "error",
+        error: {
+          code: 400,
+          message: "Content-Type is not supported",
+        },
+      });
     }
   } catch (error) {
     console.log({ error }, "unable to update file, file not found", { id });
