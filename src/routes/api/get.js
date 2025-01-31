@@ -1,6 +1,6 @@
 // src/routes/api/get.js
 
-const { File } = require("../../model/File");
+const { File } = require("../../model/file");
 
 module.exports = async (req, res) => {
   const ownerId = req.user;
