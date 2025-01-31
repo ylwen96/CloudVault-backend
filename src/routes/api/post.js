@@ -14,18 +14,16 @@ module.exports = async (req, res) => {
       await file.save();
       await file.setData(req.body);
       res.location(`${process.env.API_URL}/drive/files/${file.id}`);
-      res.status(201).json(createSuccessResponse({ file: file }));
+      res.status(201).json({ status: "ok", file: file });
     } catch (error) {
       console.log({ error }, "post request failed", { ownerId });
       throw new Error({ error }, "unable to save file");
     }
   } else {
     console.log("post request failed", { ownerId });
-    res
-      .status(415)
-      .json({
-        status: `error`,
-        error: { code: 415, message: "Content-Type is not supported" },
-      });
+    res.status(415).json({
+      status: `error`,
+      error: { code: 415, message: "Content-Type is not supported" },
+    });
   }
 };

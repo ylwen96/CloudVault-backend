@@ -5,7 +5,7 @@ const express = require("express");
 const { version, author } = require("../../package.json");
 const router = express.Router();
 
-router.use(`/drive`, require("./api/index"));
+router.use(`/drive`, require("./api"));
 
 router.get("/", (req, res) => {
   // Client's shouldn't cache this response (always request it fresh)
