@@ -5,6 +5,8 @@ const cors = require("cors");
 const helmet = require("helmet");
 const compression = require("compression");
 const app = express();
+const passport = require('passport');
+const authorization = require('./authorization');
 
 require("dotenv").config(); // read env file
 
@@ -12,6 +14,9 @@ require("dotenv").config(); // read env file
 app.use(helmet()); // Use security middleware
 app.use(cors()); // Use CORS middleware so we can make requests across origins
 app.use(compression()); // Use gzip/deflate compression middleware
+// Set up our passport authorization middleware
+passport.use(authorization.strategy());
+app.use(passport.initialize());
 
 // routes
 app.use('/', require('./routes'));
