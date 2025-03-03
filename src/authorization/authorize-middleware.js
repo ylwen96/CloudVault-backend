@@ -17,12 +17,26 @@ module.exports = (strategyName) => {
       // Something failed, let the the error handling middleware deal with it
       if (err) {
         console.log({ err }, "error authenticating user");
-        return next(createErrorResponse(500, "Unable to authenticate user"));
+        return next({
+          status: 'error',
+          error: {
+            code: 500,
+            message: err
+          }
+        })
       }
 
       // Not authorized, return a 401
       if (!email) {
-        return res.status(401).json(createErrorResponse(401, "Unauthorized"));
+        return res.status(401).json(
+          {
+            status: 'error',
+            error: {
+              code: 401,
+              message: "Unauthorized"
+            }
+          }
+        );
       }
 
       // Authorized. Hash the user's email, attach to the request, and continue
