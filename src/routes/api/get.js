@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
   const expand = req.query.expand;
 
   try {
-    const files = await File.byUser(ownerId, expand === 'true');
+    const files = await File.byUser(ownerId, expand > 0);
     res.status(200).json({
       status: "ok",
       files: files,
